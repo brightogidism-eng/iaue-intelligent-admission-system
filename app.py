@@ -94,12 +94,17 @@ if role == "I am an APPLICANT":
             st.write(f"**{a['Name']}** - {a['Course']} - Aggregate: {a['Aggregate']} | Cut-off: {a['Cut-off']} | OLevel: {credits} | Status: {a['Status']}")
 
 # ================= ADMIN =================
-else:
+    else:
     st.header("Admin Dashboard")
     pwd = st.text_input("Admin Password", type="password")
-    if pwd == "admin123":
-        st.success("Welcome Admin")
-
+    login = st.button("Login as Admin")
+    if login and pwd == "admin123":
+        st.success("Welcome Admin!")
         apps = st.session_state.applicants
         if not apps:
             st.info("No applicants yet.")
+        else:
+            st.write(f"Total Applicants: {len(apps)}")
+            st.dataframe(apps)
+    elif login:
+        st.error("Wrong password. Try admin123")
