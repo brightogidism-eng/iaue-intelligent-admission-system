@@ -102,4 +102,4 @@ else:
 
         apps = st.session_state.applicants
         if not apps:
-            st.info("No applicants yet. Ask
+            st.info("No applicants yet.")
